@@ -5,14 +5,14 @@ import pool from '../database';
 class StudentController {
 
     public async list (req: Request, res: Response){
-        const estudiantes = await pool.query('SELECT * FROM estudiante');
+        const estudiantes = await pool.query('SELECT * FROM lmz.STUDENTS');
         res.json(estudiantes);
         //res.json({text: 'LISTADO'});
     }
 
     public async getOne (req: Request, res: Response): Promise<any>{
         const {id}  = req.params;
-        const estudiante = await pool.query('SELECT * FROM estudiante WHERE idStudent = ?', [id]);
+        const estudiante = await pool.query('SELECT * FROM STUDENTS WHERE STUDENT_ID = ?', [id]);
         if(estudiante.length > 0){
             return res.json(estudiante[0]);
         }
@@ -22,22 +22,21 @@ class StudentController {
 
     public async create (req: Request, res: Response): Promise<void>{
         console.log(req.body);
-        await pool.query('INSERT INTO estudiante set ?', [req.body]);
+        await pool.query('INSERT INTO STUDENTS set ?', [req.body]);
         res.json({message: 'Estudiante Generado'});
     }
 
     public async update (req: Request, res: Response): Promise<void>{
         const {id} = req.params;
-        await pool.query('UPDATE estudiante set ? WHERE idStudent = ?', [req.body, id]);
+        await pool.query('UPDATE STUDENTS set ? WHERE STUDENT_ID = ?', [req.body, id]);
         res.json({text: 'Estudiante actualizado'});
     }
 
     public async delete (req: Request, res: Response): Promise<void>{
         const {id} = req.params;
-        await pool.query('DELETE FROM estudiante WHERE idStudent = ?', [id]);
+        await pool.query('DELETE FROM STUDENTS WHERE STUDENT_ID = ?', [id]);
         res.json({text: 'Estudiante eliminado'});
     }
-
 }
 
 const studentController = new StudentController();

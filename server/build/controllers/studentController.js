@@ -16,7 +16,7 @@ const database_1 = __importDefault(require("../database"));
 class StudentController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const estudiantes = yield database_1.default.query('SELECT * FROM estudiante');
+            const estudiantes = yield database_1.default.query('SELECT * FROM lmz.STUDENTS');
             res.json(estudiantes);
             //res.json({text: 'LISTADO'});
         });
@@ -24,7 +24,7 @@ class StudentController {
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const estudiante = yield database_1.default.query('SELECT * FROM estudiante WHERE idStudent = ?', [id]);
+            const estudiante = yield database_1.default.query('SELECT * FROM STUDENTS WHERE STUDENT_ID = ?', [id]);
             if (estudiante.length > 0) {
                 return res.json(estudiante[0]);
             }
@@ -35,21 +35,21 @@ class StudentController {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
-            yield database_1.default.query('INSERT INTO estudiante set ?', [req.body]);
+            yield database_1.default.query('INSERT INTO STUDENTS set ?', [req.body]);
             res.json({ message: 'Estudiante Generado' });
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE estudiante set ? WHERE idStudent = ?', [req.body, id]);
+            yield database_1.default.query('UPDATE STUDENTS set ? WHERE STUDENT_ID = ?', [req.body, id]);
             res.json({ text: 'Estudiante actualizado' });
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('DELETE FROM estudiante WHERE idStudent = ?', [id]);
+            yield database_1.default.query('DELETE FROM STUDENTS WHERE STUDENT_ID = ?', [id]);
             res.json({ text: 'Estudiante eliminado' });
         });
     }

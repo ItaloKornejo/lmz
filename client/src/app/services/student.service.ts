@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class StudentService {
 
-  API_URL = 'https://lmz-chatbot.herokuapp.com/';
+  API_URL = 'http://localhost:3000/api';
 
   constructor (private http: HttpClient) { }
 
