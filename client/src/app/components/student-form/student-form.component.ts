@@ -16,10 +16,10 @@ export class StudentFormComponent implements OnInit {
 
   student: Student ={
     idStudent: 0,
-    nombreStudent: '' ,
-    apellidoStudent: '',
-    telefonoStudent: '' ,
-    aulaStudent: '' 
+    nameStudent: '' ,
+    lastnameStudent: '',
+    phoneStudent: 0 ,
+    statusStudent: 0 
 };
 
 edit: boolean = false;

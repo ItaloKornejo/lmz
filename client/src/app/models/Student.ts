@@ -1,7 +1,10 @@
 export interface Student{
     idStudent?: number;
-    nombreStudent?: string ;
-    apellidoStudent?: string ;
-    telefonoStudent?: string ;
-    aulaStudent?: string   ; 
+    nameStudent?: string;
+    lastnameStudent?: string;
+    phoneStudent?: number;
+    creationStudent?: Date;
+    statusStudent?: number;
+    idClassrooms?: number;
+    idSchools?: number;
 }

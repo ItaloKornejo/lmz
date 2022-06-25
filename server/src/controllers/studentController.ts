@@ -1,10 +1,11 @@
-
+import { Student } from "../../../server/src/models/student";
 import {request, Request, Response, text } from 'express';
 import pool from '../database';
 
 class StudentController {
 
     public async list (req: Request, res: Response){
+        
         const estudiantes = await pool.query('SELECT * FROM lmz.STUDENTS');
         res.json(estudiantes);
         //res.json({text: 'LISTADO'});

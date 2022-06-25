@@ -11,7 +11,7 @@ import { Student } from "../../models/Student";
 export class StudentListComponent implements OnInit {
 
  // @HostBinding('class') classes = 'row';
-
+  //students: Student;
   students: any = []; 
 
   constructor(private studentService: StudentService) { }
@@ -30,14 +30,15 @@ export class StudentListComponent implements OnInit {
      );
   }
 
+  
   deleteStudent(idStudent: string){
-    this.studentService.deleteStudent(idStudent).subscribe(
+    /*this.studentService.deleteStudent(idStudent).subscribe(
       res => {
         console.log(res);
         this.getStudents();
       },
       err => console.log(err)
-    )
+    )*/
   }
 
   /*updateStudent(idStudent: string){
