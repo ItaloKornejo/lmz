@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class StudentService {
 
   API_URL = 'http://localhost:3000/api';
@@ -21,7 +22,6 @@ export class StudentService {
       return this.http.get(`${this.API_URL}/student/${idStudent}`);
     }
     
-    
     deleteStudent(idStudent: string|number){
       return this.http.delete(`${this.API_URL}/student/${idStudent}`);
     }
@@ -33,8 +33,6 @@ export class StudentService {
     updateStudent(idStudent: string|number, updatedStudent: Student): Observable<Student>{
       return this.http.put(`${this.API_URL}/student/${idStudent}`, updatedStudent);
     }
-    
-  
 }
 
 ////////////////////////////////////////DEV///////////////////////////////////////////

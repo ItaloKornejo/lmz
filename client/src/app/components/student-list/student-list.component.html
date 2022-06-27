@@ -18,10 +18,10 @@
       </thead>
       <tbody>
         <tr *ngFor = "let student of students">
-          <th scope="row">{{student.nameStudent}}</th>
-          <td>{{student.STUDENT_ID}}</td>
-          <td>{{student.phoneStudent}}</td>
-          <td>{{student.statusStudent}}</td>
+          <th scope="row">{{student.name}}</th>
+          <td>{{student.lastname}}</td>
+          <td>{{student.phone}}</td>
+          <td>{{student.creation}}</td>
           <td>
             <a [routerLink]="['/student/edit', student.idStudent]" class="btn btn-warning" ><i class="fas fa-edit"></i></a>
             <a class="btn btn-danger" (click)="deleteStudent(student.idStudent)"><i class="far fa-trash-alt"></i></a>

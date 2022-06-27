@@ -1,5 +1,6 @@
 import { Component,HostBinding, OnInit } from '@angular/core';
 import { StudentService } from "../../services/student.service";
+import { ClassroomService } from "../../services/classroom.service";
 import { Student } from "../../models/Student";
 
 @Component({
@@ -11,8 +12,8 @@ import { Student } from "../../models/Student";
 export class StudentListComponent implements OnInit {
 
  // @HostBinding('class') classes = 'row';
-  //students: Student;
   students: any = []; 
+  classroom: any = [];
 
   constructor(private studentService: StudentService) { }
 
@@ -29,6 +30,8 @@ export class StudentListComponent implements OnInit {
        err => console.error(err)
      );
   }
+
+  
 
   
   deleteStudent(idStudent: string){
