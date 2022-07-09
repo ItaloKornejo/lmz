@@ -1,4 +1,5 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn ,OneToMany} from 'typeorm';
+import { Student } from "./student.entity"
 
 @Entity('CLASSROOMS')
 export class Classroom extends BaseEntity {
@@ -17,5 +18,8 @@ export class Classroom extends BaseEntity {
 
   @Column({ name: 'CLASSROOM_STATUS' })
   status!: number;
+
+  @OneToMany(() => Student, (student) => student.classroom)
+  students!: Student[];
 
 }

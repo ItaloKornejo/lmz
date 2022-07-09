@@ -26,7 +26,6 @@ export const saveStudent = async (iStudent: IStudent) => {
   const student = new Student();
   student.name = iStudent.name;
   student.lastname = iStudent.lastname;
-  student.phone = iStudent.phone;
   student.idClassroom = iStudent.idClassroom;
   student.idSchool = iStudent.idSchool;
 
@@ -37,7 +36,7 @@ export const updateStudent = async (id: number, iStudent: IStudent) => {
   const student = await studentRepository.findOneBy({ id });
   if (student) {
     const studentUpdated = new Student();
-    studentUpdated.phone = iStudent.phone;
+    studentUpdated.name = iStudent.name;
 
     return await studentRepository.update(student.id, studentUpdated) ? studentUpdated : null;
   } else {
