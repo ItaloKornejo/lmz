@@ -21,6 +21,13 @@ class StudentController {
             //res.json({text: 'LISTADO'});
         });
     }
+    listStudents(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const estudiantes = yield database_1.default.query(' SELECT STUDENT_ID as "studentId", STUDENT_NAME as "studentName",STUDENT_LASTNAME as "studentLastname",STUDENT_PHONE as "studentPhone",STUDENT_CREATION as "studentCreation",STUDENT_STATUS as "studentStatus",CLASSROOMS_CLASSROOM_ID as "classroomId",CLASSROOM_NAME as "classroomName",CLASSROOM_GRADE as "classroomGrade"FROM STUDENTS INNER JOIN CLASSROOMS ON STUDENTS.CLASSROOMS_CLASSROOM_ID = CLASSROOMS.CLASSROOM_ID; ');
+            res.json(estudiantes);
+            //res.json({text: 'LISTADO'});
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

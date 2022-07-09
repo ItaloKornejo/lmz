@@ -15,7 +15,7 @@ export class StudentService {
   constructor (private http: HttpClient) { }
 
     getStudents(){
-      return this.http.get(`${this.API_URL}/student`);
+      return this.http.get(`${this.API_URL}/student/listmain`);
     }
 
     getStudent(idStudent: string|number){

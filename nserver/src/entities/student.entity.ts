@@ -28,5 +28,5 @@ export class Student extends BaseEntity {
   idSchool!: number;
 
   @ManyToOne(() => Classroom, (classroom) => classroom.students)
-    classroom!: Classroom[];
+  classroom!: Classroom[];
 }
