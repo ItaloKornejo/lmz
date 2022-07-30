@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { StudentListComponent } from './components/student-list/student-list.component'; 
 import { StudentFormComponent } from './components/student-form/student-form.component'; 
 import { SessionListComponent } from './components/session-list/session-list.component';
+import { SessionFormComponent } from './components/session-form/session-form.component';
 import { HomeworkListComponent } from './components/homework-list/homework-list.component';
 import { HomeworkInfoComponent } from './components/homework-info/homework-info.component';
 import { HomeworkFormComponent } from './components/homework-form/homework-form.component';
+
 
 const routes: Routes = [
   {
@@ -30,10 +32,13 @@ const routes: Routes = [
     component: SessionListComponent
   },
   {
+    path:'session/add',
+    component: SessionFormComponent
+  },
+  {
     path:'homework',
     component: HomeworkListComponent
-  }
-  ,
+  },
   {
     path:'homework/view',
     component: HomeworkInfoComponent
