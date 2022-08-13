@@ -14,7 +14,8 @@ import { SessionFormComponent } from './components/session-form/session-form.com
 import { HomeworkFormComponent } from './components/homework-form/homework-form.component';
 import { SessionListComponent } from './components/session-list/session-list.component';
 import { HomeworkListComponent } from './components/homework-list/homework-list.component';
-import { HomeworkInfoComponent } from './components/homework-info/homework-info.component'; 
+import { HomeworkInfoComponent } from './components/homework-info/homework-info.component';
+import { LoginComponent } from './components/login/login.component'; 
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HomeworkInfoComponent } from './components/homework-info/homework-info.
     HomeworkFormComponent,
     SessionListComponent,
     HomeworkListComponent,
-    HomeworkInfoComponent
+    HomeworkInfoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -7,12 +7,13 @@ import { SessionFormComponent } from './components/session-form/session-form.com
 import { HomeworkListComponent } from './components/homework-list/homework-list.component';
 import { HomeworkInfoComponent } from './components/homework-info/homework-info.component';
 import { HomeworkFormComponent } from './components/homework-form/homework-form.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/student',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path:'homework/add',
     component: HomeworkFormComponent
+  },
+  {
+    path:'login',
+    component: LoginComponent
   }
 ];
 
