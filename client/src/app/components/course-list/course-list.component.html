@@ -29,7 +29,7 @@
                     <p class="card-text"><span style="font-weight:bold">Nivel: </span>{{course.CLASSROOM_GRADE}} {{course.CLASSROOM_LEVEL}}</p>
                     <p class="card-text"><span style="font-weight:bold">Codigo: </span>{{course.COURSE_CODE}}</p>
                     <div class="d-flex justify-content-between">
-                        <a class="btn btn-info" ><i class="fa fa-arrow-right fa-2x" (click)="goCourse()" aria-hidden="true"></i></a>
+                        <a class="btn btn-info" (click)="goCourse()"><i class="fa fa-arrow-right fa-2x"  aria-hidden="true"></i></a>
                         <a class="btn btn-danger opacity-50" (click)="deleteCourse(course.COURSE_ID)"><i class="fa fa-trash"  aria-hidden="true"></i></a>
                     </div>
                 </div>
