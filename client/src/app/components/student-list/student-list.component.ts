@@ -2,6 +2,9 @@ import { Component,HostBinding, OnInit } from '@angular/core';
 import { StudentService } from "../../services/student.service";
 import { ClassroomService } from "../../services/classroom.service";
 import { Student } from "../../models/Student";
+import Swal from 'sweetalert2';
+import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-list',
@@ -15,9 +18,10 @@ export class StudentListComponent implements OnInit {
   students: any = []; 
   classroom: any = [];
 
-  constructor(private studentService: StudentService) { }
+  constructor(private router: Router,private userService: LoginService,private studentService: StudentService) { }
 
   ngOnInit() {
+    this.userService.isLoggedIn=true;
     this.getStudents();
   }
 
@@ -30,18 +34,34 @@ export class StudentListComponent implements OnInit {
        err => console.error(err)
      );
   }
-
-  
-
   
   deleteStudent(idStudent: string){
-    /*this.studentService.deleteStudent(idStudent).subscribe(
+    this.studentService.deleteStudent(idStudent).subscribe(
       res => {
         console.log(res);
         this.getStudents();
       },
       err => console.log(err)
-    )*/
+    )
+  }
+
+  downloadStudens(){
+    this.studentService.getPdf().subscribe(
+      res => {
+         console.log(res)
+         
+       },
+       err => console.error(err)
+     );
+     Swal.fire({
+          icon: 'success',
+          title: 'Lista de Alumnos PDF'
+          // text: 'Something went wrong!',
+        });
+  }
+  goStudents(){
+    // this.userService.isLoggedIn=true;
+    this.router.navigate(['/student/add']);
   }
 
   /*updateStudent(idStudent: string){

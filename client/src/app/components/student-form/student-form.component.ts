@@ -4,6 +4,7 @@ import { Student } from 'src/app/models/Student';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 import {Route} from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-student-form',
@@ -13,22 +14,25 @@ import {Route} from '@angular/router';
 export class StudentFormComponent implements OnInit {
 
   @HostBinding('class') classes = 'row';
+  
 
   student: Student ={
-    idStudent: 0,
-    nameStudent: '' ,
-    lastnameStudent: '',
-    phoneStudent: 0 ,
-    statusStudent: 0 
+    STUDENT_ID: 0,
+    STUDENT_NAME: '' ,
+    STUDENT_LASTNAME: '',
+    CLASSROOMS_CLASSROOM_ID: 7 ,
+    SCHOOLS_SCHOOL_ID : 1
+    // statusStudent: 0 
 };
 
 edit: boolean = false;
 buttonState: string="Guardar";
 
-constructor(private studentService: StudentService,private router: Router, private activedRoute: ActivatedRoute) { }
+constructor(private userService: LoginService,private studentService: StudentService,private router: Router, private activedRoute: ActivatedRoute) { }
 
 ngOnInit(): void {
-    const params = this.activedRoute.snapshot.params;
+  console.log(this.userService.isLoggedIn)
+  const params = this.activedRoute.snapshot.params;
     if(params['id']){
       this.studentService.getStudent(params['id'])
         .subscribe(
@@ -41,11 +45,10 @@ ngOnInit(): void {
           err => console.error(err)
         )
     }
-   
   }
 
   saveNewStudent(){
-    delete this.student.idStudent;
+    delete this.student.STUDENT_ID;
     this.studentService.saveStudent(this.student).subscribe(
       res =>{
         console.log(res);
@@ -57,7 +60,11 @@ ngOnInit(): void {
 
   updateStudent(){
     console.log(this.student);
-    this.studentService.updateStudent(this.student.idStudent!, this.student)
+    delete this.student.CLASSROOMS_CLASSROOM_ID;
+    delete this.student.SCHOOLS_SCHOOL_ID;
+    delete this.student.STUDENT_STATUS;
+    delete this.student.STUDENT_CREATION;
+    this.studentService.updateStudent(this.student.STUDENT_ID!, this.student)
     .subscribe(
       res =>{
         console.log(res);    
@@ -66,8 +73,6 @@ ngOnInit(): void {
       err => console.error(err)
     )
   }
-
-
 
 }
 

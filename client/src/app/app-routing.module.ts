@@ -8,6 +8,9 @@ import { HomeworkListComponent } from './components/homework-list/homework-list.
 import { HomeworkInfoComponent } from './components/homework-info/homework-info.component';
 import { HomeworkFormComponent } from './components/homework-form/homework-form.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { CourseListComponent } from './components/course-list/course-list.component';
+import { CourseFormComponent } from './components/course-form/course-form.component';
 
 
 const routes: Routes = [
@@ -55,6 +58,18 @@ const routes: Routes = [
   {
     path:'login',
     component: LoginComponent
+  },
+  {
+    path:'register',
+    component: RegisterComponent
+  },
+  {
+    path:'course',
+    component: CourseListComponent
+  },
+  {
+    path:'course/add',
+    component: CourseFormComponent
   }
 ];
 

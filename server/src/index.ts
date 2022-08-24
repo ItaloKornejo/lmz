@@ -4,6 +4,8 @@ import cors from 'cors';
 
 import indexRoutes from './routes/indexRoutes';
 import studentRoutes from './routes/studentRoutes';
+import userRoutes from './routes/userRoutes';
+import courseRoutes from './routes/courseRoutes';
 
 
 
@@ -28,6 +30,8 @@ class Server{
     routes():void{
         this.app.use('/',indexRoutes)
         this.app.use('/api/student',studentRoutes)
+        this.app.use('/api/user',userRoutes)
+        this.app.use('/api/course',courseRoutes)
 
     }
     start():void{

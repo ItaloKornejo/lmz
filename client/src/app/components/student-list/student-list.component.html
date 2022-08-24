@@ -1,11 +1,15 @@
 
+
 <div class="container mt-3">
-    <div style="width: 90%; height: 50%;float:left;">
+    <div style="width: 80%; height: 50%;float:left;">
         <h2>Alumnos Periodo 2022</h2>
     </div>
     <div style="width: 10%; height: 50%; float:right;">
-        <a href="/student/add" class="btn btn-success" role="button">Agregar</a>
+        <a class="btn btn-success" role="button" (click)="goStudents()" ><i class="fa fa-plus" aria-hidden="true"></i></a>
     </div>
+    <div style="width: 10%; height: 50%; float:left;">
+      <a class="btn btn-info" role="button" (click)="downloadStudens()"><i class="fa fa-download" aria-hidden="true"></i></a>
+  </div>
     <table class="table table-hover">
       <thead class="table">
         <tr>
@@ -19,14 +23,14 @@
       </thead>
       <tbody>
         <tr *ngFor = "let student of students">
-          <th scope="row">{{student.studentName}}</th>
-          <td>{{student.studentLastname}}</td>
-          <td>{{student.studentPhone}}</td>
-          <td>{{student.classroomName}}</td>
-          <td>{{student.classroomGrade}}</td>
+          <th scope="row">{{student.STUDENT_NAME}}</th>
+          <td>{{student.STUDENT_LASTNAME}}</td>
+          <td>{{student.STUDENT_PHONE}}</td>
+          <td>{{student.CLASSROOM_NAME}}</td>
+          <td>{{student.CLASSROOM_GRADE}} {{student.CLASSROOM_LEVEL}}</td>
           <td>
-            <a [routerLink]="['/student/edit', student.idStudent]" class="btn btn-warning" ><i class="fas fa-edit"></i></a>
-            <a class="btn btn-danger" (click)="deleteStudent(student.idStudent)"><i class="far fa-trash-alt"></i></a>
+            <a [routerLink]="['/student/edit', student.STUDENT_ID]" class="btn btn-warning" ><i class="fas fa-edit"></i></a>
+            <a class="btn btn-danger" (click)="deleteStudent(student.STUDENT_ID)"><i class="far fa-trash-alt"></i></a>
           </td>
         </tr>
       </tbody>

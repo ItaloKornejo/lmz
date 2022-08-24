@@ -15,7 +15,10 @@ import { HomeworkFormComponent } from './components/homework-form/homework-form.
 import { SessionListComponent } from './components/session-list/session-list.component';
 import { HomeworkListComponent } from './components/homework-list/homework-list.component';
 import { HomeworkInfoComponent } from './components/homework-info/homework-info.component';
-import { LoginComponent } from './components/login/login.component'; 
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { CourseListComponent } from './components/course-list/course-list.component';
+import { CourseFormComponent } from './components/course-form/course-form.component'; 
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { LoginComponent } from './components/login/login.component';
     SessionListComponent,
     HomeworkListComponent,
     HomeworkInfoComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    CourseListComponent,
+    CourseFormComponent
   ],
   imports: [
     BrowserModule,

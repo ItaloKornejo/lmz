@@ -1,0 +1,79 @@
+
+<!-- <div class="col offset"> -->
+<div class="d-flex justify-content-center">
+    <div class="card align-items-center">
+        <div class="car-body" >
+            <!-- <form>
+                <div><p></p></div>
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/002/165/413/small/line-icon-for-student-vector.jpg" class="card-img-top" width="300" height="310">
+                <div><p> </p> </div>
+                <div class="form-group">
+                    <input type="text" name="nombreStudent"  placeholder="Nombre" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="apellidoStudent" placeholder="Apellido" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="telefonoStudent"  placeholder="Telefono" class="form-control" required>
+                </div>
+                <button class="btn btn-success btn-block" >
+                </button>
+                <div><p></p></div>
+            </form> -->
+            <div class="card-body align">
+            <form>
+                <fieldset>
+                  
+                <div class="d-flex justify-content-center">
+                    <h3>Registro de Curso</h3>
+                </div>
+                  <div class="form-group">
+                    <label style="font-weight:bold" for="exampleInputEmail1" class="form-label mt-4">Curso</label>
+                    <input type="text" class="form-control" [(ngModel)]="course.COURSE_NAME" name="nameCourse" aria-describedby="emailHelp" placeholder="Ingresar Nombre">
+                  </div>
+                  <div class="form-group">
+                    <label  style="font-weight:bold" for="exampleInputPassword1" class="form-label mt-4">Codigo</label>
+                    <input type="text" class="form-control"  [(ngModel)]="course.COURSE_CODE" name="codeCourse" placeholder="Numero de 4 Digitos">
+                  </div>
+                  <div class="form-group">
+                    <label  style="font-weight:bold" for="exampleSelect1" class="form-label mt-4">Salon</label>
+                    <select class="form-select" id="exampleSelect1">
+                      <option>A</option>
+                      <option>B</option>
+                      <option>C</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label  style="font-weight:bold" for="exampleSelect1" class="form-label mt-4">Grado</label>
+                    <select class="form-select" id="exampleSelect1">
+                      <option>1°</option>
+                      <option>2°</option>
+                      <option>3°</option>
+                      <option>4°</option>
+                      <option>5°</option>
+                      <option>6°</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label style="font-weight:bold" for="exampleSelect1" class="form-label mt-4">Nivel</label>
+                    <select class="form-select" id="exampleSelect1">
+                      <option>Primaria</option>
+                      <option>Secundaria</option>
+                    </select>
+                  </div>
+                  <!-- <div class="form-group">
+                    <label style="font-weight:bold" for="formFile" class="form-label mt-4">Default file input example</label>
+                    <input class="form-control" type="file" id="formFile">
+                  </div> -->
+                  <hr>
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success" (click)="saveNewCourse()">Guardar</button>
+                </div>
+                  
+                </fieldset>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+

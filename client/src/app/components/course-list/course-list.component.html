@@ -1,0 +1,39 @@
+<div  class="grid">
+    <!-- <div class="p-1">
+        <a class="btn btn-success" role="button"  ><i class="fa fa-plus" aria-hidden="true"></i></a>
+    </div>
+    <div class="p-1"><hr></div> -->
+    <div class="d-flex flex-row-reverse">
+        <div class="p-2"><a class="btn btn-success" role="button" routerLink="/course/add" ><i class="fa fa-plus" aria-hidden="true"> Agregar</i></a></div>
+      </div>
+  </div>
+<div class="grid"> 
+    <div class="row">
+        <div class="col-md-4" *ngFor="let course of courses">
+        <!-- <div class="card text-center">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            {{course.COURSE_NAME}}
+        </div>
+        <img src="">
+        <div class="card-body">
+
+        </div>
+    </div> -->
+            <div class="card" style="width: 18rem;">
+                <img src="https://us.123rf.com/450wm/olegdudko/olegdudko1908/olegdudko190803565/128901293-school-supplies-on-black-board-background-back-to-school-concept.jpg?ver=6" class="card-img-top" alt="...">
+                <div class="card-body align">
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title">{{course.COURSE_NAME}}</h5>
+                    </div>
+                    <p class="card-text"><span style="font-weight:bold">Salon: </span>{{course.CLASSROOM_NAME}}</p>
+                    <p class="card-text"><span style="font-weight:bold">Nivel: </span>{{course.CLASSROOM_GRADE}} {{course.CLASSROOM_LEVEL}}</p>
+                    <p class="card-text"><span style="font-weight:bold">Codigo: </span>{{course.COURSE_CODE}}</p>
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-info" ><i class="fa fa-arrow-right fa-2x" (click)="goCourse()" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger opacity-50" (click)="deleteCourse(course.COURSE_ID)"><i class="fa fa-trash"  aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

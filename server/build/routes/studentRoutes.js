@@ -13,6 +13,7 @@ class StudentRoutes {
     config() {
         this.router.get('/', studentController_1.default.list);
         this.router.get('/listmain/', studentController_1.default.listStudents);
+        this.router.get('/pdf', studentController_1.default.getPdf);
         this.router.get('/:id', studentController_1.default.getOne);
         this.router.post('/', studentController_1.default.create);
         this.router.put('/:id', studentController_1.default.update);
