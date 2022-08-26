@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   @HostBinding('class') classes = 'row';
 
 
-
+  isAuth : any = [];
   user: User ={
     USER_ID: 0,
     USER_NAME: '' ,
@@ -27,20 +27,26 @@ export class LoginComponent implements OnInit {
     // this.userService.isLoggedIn=false;
   }
 
-  isLogin(){
-    // if(this.user.USER_NAME=='user@two' && this.user.USER_PASSWORD=='passtwo'){
-    if(this.user.USER_NAME=='a' && this.user.USER_PASSWORD=='a'){
-      // this.userService.isLoggedIn=true;
-      console.log('From LOGIN: '+this.user);
-      Swal.fire({
-        icon: 'success',
-        timer: 1000
-      });
-      this.router.navigate(['/course']);
-    }else{
-      Swal.fire({
-        icon: 'error'
-      });
-    }
+  isAuthComponent(){
+    this.userService.getAuth(this.user).subscribe(
+      res => {
+         this.isAuth = res;
+         if(Object.values(this.isAuth[0])[0]!=0){
+          Swal.fire({
+            icon: 'success',
+            timer: 1000
+          });
+          this.router.navigate(['/course']);
+
+         }else{
+          Swal.fire({
+            icon: 'error',
+            timer: 1500,
+            text: 'Usuario o Contraseña Incorrecta'
+          });
+         }
+       },
+       err => console.error(err)
+     );
   }
 }

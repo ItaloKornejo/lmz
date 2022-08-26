@@ -21,6 +21,16 @@ class CourseController {
         res.status(404).json({text: 'Curso no encontrado'});
     }
 
+    public async selectOne (req: Request, res: Response): Promise<any>{
+        const {id}  = req.params;
+        const course = await pool.query('SELECT * FROM lmz.courses WHERE COURSE_ID= ?', [id]);
+        if(course.length > 0){
+            return res.json(course[0]);
+        }
+        console.log(course);
+        res.status(404).json({text: 'Curso no encontrado'});
+    }
+
     public async create (req: Request, res: Response): Promise<void>{
         console.log(req.body);
         await pool.query('INSERT INTO lmz.courses set ?', [req.body]);

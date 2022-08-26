@@ -14,15 +14,12 @@ import { LoginService } from 'src/app/services/login.service';
 export class StudentFormComponent implements OnInit {
 
   @HostBinding('class') classes = 'row';
-  
-
   student: Student ={
     STUDENT_ID: 0,
     STUDENT_NAME: '' ,
     STUDENT_LASTNAME: '',
     CLASSROOMS_CLASSROOM_ID: 7 ,
     SCHOOLS_SCHOOL_ID : 1
-    // statusStudent: 0 
 };
 
 edit: boolean = false;

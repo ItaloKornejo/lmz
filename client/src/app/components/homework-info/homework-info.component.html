@@ -1,78 +1,51 @@
+
+
+<div style="width: 85%; height: 50%;float:left;">
+  <h2> Periodo 2022</h2>
+  <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+</div>
+<div style="width: 15%; height: 50%; float:right;">
+  <a class="btn btn-warning" role="button">Modificar  <i class="fa fa-wrench" aria-hidden="true"></i> </a>
+</div>
 <div class="container mt-3">
-    <div style="width: 90%; height: 50%;float:left;">
-        <h2>Tarea 1</h2>
-    </div>
-    <div style="width: 10%; height: 50%; float:right;">
-        <a href="" class="btn btn-warning" role="button">Modificar</a>
-    </div>
-    <table class="table table-hover">
-      <thead class="table">
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Telefono</th>
-          <th scope="col">Aula</th>
-          <th scope="col">Calificacion</th>
-          <th scope="col">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr >
-          <th scope="row">Diego</th>
-          <td>Chavez</td>
-          <td>1113344</td>
-          <td>5B</td>
-          <td>12</td>
-          <td> 
-            <a  class="btn btn-info" ><i class='fas fa-eye fa-lg'></i></a>
-            <a  class="btn btn-success" ><i class='fas fa-check-circle'></i></a>
-          </td>
-        </tr>
-        <tr >
-            <th scope="row">Diego</th>
-            <td>Chavez</td>
-            <td>1113344</td>
-            <td>5B</td>
-            <td>12</td>
-            <td> 
-              <a  class="btn btn-info" ><i class='fas fa-eye fa-lg'></i></a>
-              <a  class="btn btn-success" ><i class='fas fa-check-circle'></i></a>
-            </td>
-          </tr>
-          <tr >
-            <th scope="row">Diego</th>
-            <td>Chavez</td>
-            <td>1113344</td>
-            <td>5B</td>
-            <td>12</td>
-            <td> 
-              <a  class="btn btn-info" ><i class='fas fa-eye fa-lg'></i></a>
-              <a  class="btn btn-success" ><i class='fas fa-check-circle'></i></a>
-            </td>
-          </tr>
-          <tr >
-            <th scope="row">Diego</th>
-            <td>Chavez</td>
-            <td>1113344</td>
-            <td>5B</td>
-            <td>12</td>
-            <td> 
-              <a  class="btn btn-info" ><i class='fas fa-eye fa-lg'></i></a>
-              <a  class="btn btn-success" ><i class='fas fa-check-circle'></i></a>
-            </td>
-          </tr>
-          <tr >
-            <th scope="row">Diego</th>
-            <td>Chavez</td>
-            <td>1113344</td>
-            <td>5B</td>
-            <td>12</td>
-            <td> 
-              <a  class="btn btn-info" ><i class='fas fa-eye fa-lg'></i></a>
-              <a  class="btn btn-success" ><i class='fas fa-check-circle'></i></a>
-            </td>
-          </tr>
-        
-      </tbody>
-    </table>
+  <!-- <div style="width: 80%; height: 50%;float:left;">
+      <h2>Alumnos Periodo 2022</h2>
   </div>
+  <div style="width: 10%; height: 50%; float:right;">
+      <a class="btn btn-success" role="button" ><i class="fa fa-plus" aria-hidden="true"></i></a>
+  </div>
+  <div style="width: 10%; height: 50%; float:left;">
+    <a class="btn btn-info" role="button" ><i class="fa fa-download" aria-hidden="true"></i></a>
+</div> 
+ -->
+
+  <table class="table table-hover">
+    <thead class="table bg-dark">
+      <tr style="color:white">
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Aula</th>
+        <th scope="col">Nivel</th>
+        <th scope="col">Nota</th>
+        <th scope="col">Estado</th>
+        <th scope="col" class="d-flex justify-content-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let student of students">
+        <th scope="row">{{student.STUDENT_NAME}}</th>
+        <td>{{student.STUDENT_LASTNAME}}</td>
+        <td>{{student.CLASSROOM_NAME}}</td>
+        <td>{{student.CLASSROOM_GRADE}} {{student.CLASSROOM_LEVEL}}</td>
+        <td>Sin Nota</td>
+        <td>Sin Entregar</td>
+        <!-- <td class="d-flex justify-content-between"> row justify-content-center -->
+          <td class="d-flex justify-content-center">
+          <a  class="btn btn-info" ><i class="fa fa-eye" aria-hidden="true"></i></a>
+          <a class="btn btn-success" ><i class="fa fa-check" aria-hidden="true"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

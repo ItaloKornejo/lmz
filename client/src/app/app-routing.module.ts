@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CourseListComponent } from './components/course-list/course-list.component';
 import { CourseFormComponent } from './components/course-form/course-form.component';
+import { ModalSessionEditComponent } from './components/modal-session-edit/modal-session-edit.component';
 
 
 const routes: Routes = [
@@ -70,6 +71,10 @@ const routes: Routes = [
   {
     path:'course/add',
     component: CourseFormComponent
+  },
+  {
+    path:'modal',
+    component: ModalSessionEditComponent
   }
 ];
 

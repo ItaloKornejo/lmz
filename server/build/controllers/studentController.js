@@ -24,7 +24,7 @@ class StudentController {
     }
     listStudents(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const estudiantes = yield database_1.default.query('SELECT STUDENT_ID,STUDENT_NAME,STUDENT_LASTNAME,STUDENT_PHONE,CLASSROOMS_CLASSROOM_ID,CLASSROOM_NAME,CLASSROOM_GRADE,CLASSROOM_LEVEL FROM students INNER JOIN classrooms ON CLASSROOMS_CLASSROOM_ID = CLASSROOM_ID ORDER BY STUDENT_NAME ASC');
+            const estudiantes = yield database_1.default.query('SELECT STUDENT_ID,STUDENT_NAME,STUDENT_LASTNAME,STUDENT_PHONE,CLASSROOMS_CLASSROOM_ID,CLASSROOM_NAME,CLASSROOM_GRADE,CLASSROOM_LEVEL FROM students INNER JOIN classrooms ON CLASSROOMS_CLASSROOM_ID = CLASSROOM_ID WHERE CLASSROOMS_CLASSROOM_ID=7 ORDER BY STUDENT_NAME ASC');
             res.json(estudiantes);
             //res.json({text: 'LISTADO'});
         });

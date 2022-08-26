@@ -17,11 +17,25 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   getUsers(){
-    return this.http.get(`${this.API_URL}/user/`);
+    return this.http.get(`${this.API_URL}/login/`);
   }
 
   getUser(idUser: string|number){
-    return this.http.get(`${this.API_URL}/user/${idUser}`);
+    return this.http.get(`${this.API_URL}/login/${idUser}`);
+  }
+
+
+  
+  // saveHomework(homework: Homework){
+  //   return this.http.post(`${this.API_URL}/homework`, homework);
+  // }
+
+  getAuth(user : User){
+    return this.http.post(`${this.API_URL}/login/isAuth`,user);
+  }
+
+  saveUser(user: User){
+    return this.http.post(`${this.API_URL}/login`, user);
   }
 
   

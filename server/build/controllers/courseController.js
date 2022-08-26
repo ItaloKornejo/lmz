@@ -32,6 +32,17 @@ class CourseController {
             res.status(404).json({ text: 'Curso no encontrado' });
         });
     }
+    selectOne(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const course = yield database_1.default.query('SELECT * FROM lmz.courses WHERE COURSE_ID= ?', [id]);
+            if (course.length > 0) {
+                return res.json(course[0]);
+            }
+            console.log(course);
+            res.status(404).json({ text: 'Curso no encontrado' });
+        });
+    }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);

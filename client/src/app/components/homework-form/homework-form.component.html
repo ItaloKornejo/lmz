@@ -1,27 +1,66 @@
 
-<div class="col offset">
+<!-- <div class="col offset"> -->
+<div class="d-flex justify-content-center">
     <div class="card align-items-center">
-        <div class="car-body">
-            <form>
+        <div class="car-body" >
+            <!-- <form>
                 <div><p></p></div>
                 <img src="https://static.vecteezy.com/system/resources/thumbnails/002/165/413/small/line-icon-for-student-vector.jpg" class="card-img-top" width="300" height="310">
                 <div><p> </p> </div>
                 <div class="form-group">
-                    <input type="text" name="nombreStudent"  placeholder="Nombre" class="form-control" autofocus>
+                    <input type="text" name="nombreStudent"  placeholder="Nombre" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="apellidoStudent"  placeholder="Apellido" class="form-control">
+                    <input type="text" name="apellidoStudent" placeholder="Apellido" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="telefonoStudent"laceholder="Telefono" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="aulaStudent"  placeholder="Aula" class="form-control">
+                    <input type="text" name="telefonoStudent"  placeholder="Telefono" class="form-control" required>
                 </div>
                 <button class="btn btn-success btn-block" >
                 </button>
                 <div><p></p></div>
-            </form>
+            </form> -->
+            <div class="card-body align">
+            <form>
+                <fieldset>
+                  
+                <div class="d-flex justify-content-center">
+                    <h3>Nueva Tarea</h3>
+                </div>
+                  <div class="form-group">
+                    <label style="font-weight:bold" for="exampleInputEmail1" class="form-label mt-4">Nombre</label>
+                    <!-- <input type="text" class="form-control" [(ngModel)]="course.COURSE_NAME" name="nameCourse" aria-describedby="emailHelp" placeholder="Ingresar Nombre"> -->
+                    <input type="text" class="form-control border-secondary rounded"  [(ngModel)]="homework.HOMEWORK_NAME" name="homeworkName" aria-describedby="emailHelp" placeholder="Ingresar Nombre">
+                  </div>
+                  <div class="form-group">
+                    <label  style="font-weight:bold" for="exampleInputPassword1" class="form-label mt-4">Descripcion</label>
+                    <!-- <input type="text" class="form-control"  [(ngModel)]="course.HOMEWORK_DESCRIP" name="codeCourse" placeholder="Numero de 4 Digitos"> -->
+                    <textarea class="form-control border-secondary rounded" [(ngModel)]="homework.HOMEWORK_DESCRIP" name="homeworkDescrip" id="exampleTextarea"  rows="5" cols="50"></textarea>
+                    <!-- <input type="text" class="form-control"   placeholder="Numero de 4 Digitos"> -->
+                  </div>
+                  <div class="form-group">
+                    <label  style="font-weight:bold" for="exampleSelect1" class="form-label mt-4">Fecha</label>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <input type="datetime-local" id="meeting-time" [(ngModel)]="homework.HOMEWORK_MAXDATE" name="homeworkMaxtime"  name="meeting-time"  >
+                  </div>
+                  <div class="form-check form-switch">
+                    <br>
+                    <input class="form-check-input rounded" type="checkbox" id="flexSwitchCheckChecked" checked="">
+                    <label class="form-check-label " style="font-weight:bold" for="flexSwitchCheckChecked">Entrega Tardia</label>
+                  </div>
+                  <!-- <div class="form-group">
+                    <label style="font-weight:bold" for="formFile" class="form-label mt-4">Default file input example</label>
+                    <input class="form-control" type="file" id="formFile">
+                  </div> -->
+                  <hr>
+                  <div class="d-flex justify-content-center">
+                    <!-- <button type="submit" class="btn btn-success" (click)="saveNewCourse()">Guardar</button> -->
+                    <button type="submit" class="btn btn-success rounded" (click)="saveNewStudent()">Guardar</button>
+                </div>
+                </fieldset>
+              </form>
+            </div>
         </div>
     </div>
 </div>

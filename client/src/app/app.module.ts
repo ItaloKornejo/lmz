@@ -18,7 +18,11 @@ import { HomeworkInfoComponent } from './components/homework-info/homework-info.
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CourseListComponent } from './components/course-list/course-list.component';
-import { CourseFormComponent } from './components/course-form/course-form.component'; 
+import { CourseFormComponent } from './components/course-form/course-form.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalSessionEditComponent } from './components/modal-session-edit/modal-session-edit.component';
+import { ModalInfoHomeworkComponent } from './components/modal-info-homework/modal-info-homework.component';
+import { ModalCheckHomeworkComponent } from './components/modal-check-homework/modal-check-homework.component'; 
 
 @NgModule({
   declarations: [
@@ -34,13 +38,17 @@ import { CourseFormComponent } from './components/course-form/course-form.compon
     LoginComponent,
     RegisterComponent,
     CourseListComponent,
-    CourseFormComponent
+    CourseFormComponent,
+    ModalSessionEditComponent,
+    ModalInfoHomeworkComponent,
+    ModalCheckHomeworkComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [
     StudentService

@@ -13,11 +13,11 @@ export class ClassroomService {
 
   constructor(private http: HttpClient) { }
 
-  getStudents(){
+  getClassrooms(){
     return this.http.get(`${this.API_URL}/classroom`);
   }
 
-  getStudent(idClassroom: string|number){
+  getClassroom(idClassroom: string|number){
     return this.http.get(`${this.API_URL}/classroom/${idClassroom}`);
   }
 

@@ -4,6 +4,7 @@ export default {
         host: 'localhost',
         user: 'root',
         password: 'password',
-        database: 'lmz'
+        database: 'lmz',
+        timezone: 'utc'
     }
 }

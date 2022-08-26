@@ -59,7 +59,7 @@ export class StudentListComponent implements OnInit {
           // text: 'Something went wrong!',
         });
   }
-  goStudents(){
+  addStudent(){
     // this.userService.isLoggedIn=true;
     this.router.navigate(['/student/add']);
   }

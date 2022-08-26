@@ -1,152 +1,34 @@
 
 <div style="width: 85%; height: 50%;float:left;">
-    <h2> Periodo 2022</h2>
+    <h2> {{nameCourse}} </h2>
     <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 </div>
 <div style="width: 15%; height: 50%; float:right;">
-    <a routerLink="/homework/add" class="btn btn-success" role="button">Agregar <i class='fas fa-plus'></i> </a>
+    <a (click)="addHomework()" class="btn btn-success" role="button">Agregar <i class='fas fa-plus'></i> </a>
 </div>
-<div class="col-md-4" >
+
+
+<div class="col-md-3" *ngFor="let homework of homeworks" >
     <div class="card text-center">
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-           
-            <p><font size="5" color=white>Tarea 1</font></p> <button class = "btn btn-light">
-                Human
-            </button>
+        <div class="card-header bg-dark text-white d-flex justify-content-center align-items-center">
+            <span style="font-size: 175%; color: white; ">{{homework.HOMEWORK_NAME}}</span>
         </div>
-        <div><p></p></div>
-        <img src= "https://cdn2.iconfinder.com/data/icons/education-4-1/256/Homework-512.png" class="card-img-top">
-        <div><p></p>
- </div>
-        <button routerLink="/homework/view" class="btn btn-info btn-block">
-            Visualizar
-         </button>
+        <div class="d-flex justify-content-end">
+            <button (click)="deleteStudent(homework.HOMEWORK_ID)" class="btn blackiconcolor"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
+        </div>
+        <img src= "https://cdn2.iconfinder.com/data/icons/education-4-1/256/Homework-512.png" width="300" height="250" class="card-img-top">
+        <div>
+            <br>
+            <p style="font-size: 150%; font-weight: bold;">Fecha Limite</p>
+            <p class = "btn btn-light border border-danger" style="font-size: 125%; color: red; ">
+                {{(homework.HOMEWORK_MAXDATE.toString().substring(5,10))}}
+                {{(homework.HOMEWORK_MAXDATE.toString().substring(11,16))}}
+            </p>
+        </div>
+            <button routerLink="/homework/view" class="btn btn-info btn-block"><span style="font-size: 150%; color: white; ">visualizar</span></button>
     </div>
+    <div><p></p></div>
 </div>
 
 <!-- ////////////////////////////////////// XD ////////////////////////////////////////////////////////////////////////// -->
 
-<div class="col-md-4" >
-    <div class="card text-center">
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-           
-            <p><font size="5" color=white>Tarea 2</font></p> <button class = "btn btn-light">
-                Civic
-            </button>
-        </div>
-        <div><p></p></div>
-        <img src= "https://cdn2.iconfinder.com/data/icons/education-4-1/256/Homework-512.png" class="card-img-top">
-        <div><p></p>
- </div>
-        <button class="btn btn-info btn-block">
-            Visualizar
-         </button>
-    </div>
-</div>
-
-<div class="col-md-4" >
-    <div class="card text-center">
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-           
-            <p><font size="5" color=white>Tarea 3</font></p> <button class = "btn btn-light">
-                Logic
-            </button>
-        </div>
-        <div><p></p></div>
-        <img src= "https://cdn2.iconfinder.com/data/icons/education-4-1/256/Homework-512.png" class="card-img-top">
-        <div><p></p>
- </div>
-        <button class="btn btn-info btn-block">
-            Visualizar
-         </button>
-    </div>
-</div>
-<div class="col-md-4" >
-    <div class="card text-center">
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-           
-            <p><font size="5" color=white>Tarea 4</font></p> <button class = "btn btn-light">
-                Human
-            </button>
-        </div>
-        <div><p></p></div>
-        <img src= "https://cdn2.iconfinder.com/data/icons/education-4-1/256/Homework-512.png" class="card-img-top">
-        <div><p></p>
- </div>
-        <button class="btn btn-info btn-block">
-            Visualizar
-         </button>
-    </div>
-</div>
-
-<div class="col-md-4" >
-    <div class="card text-center">
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-           
-            <p><font size="5" color=white>Tarea 5</font></p> <button class = "btn btn-light">
-                Logic
-            </button>
-        </div>
-        <div><p></p></div>
-        <img src= "https://cdn2.iconfinder.com/data/icons/education-4-1/256/Homework-512.png" class="card-img-top">
-        <div><p></p>
- </div>
-        <button class="btn btn-info btn-block">
-            Visualizar
-         </button>
-    </div>
-</div>
-
-<div class="col-md-4" >
-    <div class="card text-center">
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-           
-            <p><font size="5" color=white>Tarea 6</font></p> <button class = "btn btn-light">
-                Logic
-            </button>
-        </div>
-        <div><p></p></div>
-        <img src= "https://cdn2.iconfinder.com/data/icons/education-4-1/256/Homework-512.png" class="card-img-top">
-        <div><p></p>
- </div>
-        <button class="btn btn-info btn-block">
-            Visualizar
-         </button>
-    </div>
-</div>
-
-<div class="col-md-4" >
-    <div class="card text-center">
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-           
-            <p><font size="5" color=white>Tarea 7</font></p> <button class = "btn btn-light">
-                Letr
-            </button>
-        </div>
-        <div><p></p></div>
-        <img src= "https://cdn2.iconfinder.com/data/icons/education-4-1/256/Homework-512.png" class="card-img-top">
-        <div><p></p>
- </div>
-        <button class="btn btn-info btn-block">
-            Visualizar
-         </button>
-    </div>
-</div>
-
-<div class="col-md-4" >
-    <div class="card text-center">
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-           
-            <p><font size="5" color=white>Tarea 8</font></p> <button class = "btn btn-light">
-                Letr
-            </button>
-        </div>
-        <div><p></p></div>
-        <img src= "https://cdn2.iconfinder.com/data/icons/education-4-1/256/Homework-512.png" class="card-img-top">
-        <div><p></p>
- </div>
-        <button class="btn btn-info btn-block">
-            Visualizar
-         </button>
-    </div>
-</div>
