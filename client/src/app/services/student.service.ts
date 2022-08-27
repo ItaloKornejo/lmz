@@ -27,8 +27,12 @@ export class StudentService {
       return this.http.get(`${this.API_URL}/student/pdf`);
     }
 
-    deleteStudent(idStudent: string|number){
-      return this.http.delete(`${this.API_URL}/student/${idStudent}`);
+    // deleteStudent(idStudent: string|number){
+    //   return this.http.delete(`${this.API_URL}/student/${idStudent}`);
+    // }
+
+    deleteStudent(idStudent: string|number, updatedStudent: Student): Observable<Student>{
+      return this.http.put(`${this.API_URL}/student/${idStudent}`, updatedStudent);
     }
   
     saveStudent(student: Student){
@@ -36,7 +40,7 @@ export class StudentService {
     }
   
     updateStudent(idStudent: string|number, updatedStudent: Student): Observable<Student>{
-      return this.http.put(`${this.API_URL}/student/${idStudent}`, updatedStudent);
+      return this.http.put(`${this.API_URL}/student/edit/${idStudent}`, updatedStudent);
     }
 
     isAuthService(){

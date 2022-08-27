@@ -16,9 +16,18 @@ const database_1 = __importDefault(require("../database"));
 class SessionController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const Sessions = yield database_1.default.query('SELECT SESSION_ID,SESSION_NUMBER,SESSION_INI,SESSION_END,HOMEWORK_ID,HOMEWORK_NAME,HOMEWORK_DESCRIP,HOMEWORK_MAXDATE,COURSES_COURSE_ID,COURSE_NAME,COURSE_CODE FROM sessions INNER JOIN homeworks ON SESSION_ID = SESSIONS_SESSION_ID INNER JOIN courses ON COURSES_COURSE_ID = COURSE_ID  GROUP BY HOMEWORK_NAME ORDER BY SESSION_NUMBER ASC');
+            const Sessions = yield database_1.default.query('SELECT SESSION_ID,SESSION_NUMBER,SESSION_INI,SESSION_END,HOMEWORK_ID,HOMEWORK_NAME,HOMEWORK_DESCRIP,HOMEWORK_MAXDATE,COURSES_COURSE_ID,COURSE_NAME,COURSE_CODE FROM sessions INNER JOIN homeworks ON SESSION_ID = SESSIONS_SESSION_ID INNER JOIN courses ON COURSES_COURSE_ID = COURSE_ID Where HOMEWORK_STATUS=1 GROUP BY HOMEWORK_NAME ORDER BY SESSION_NUMBER ASC');
             res.json(Sessions);
             //res.json({text: 'LISTADO'});
+        });
+    }
+    selectList(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const Homeworks = yield database_1.default.query('SELECT HOMEWORK_ID,HOMEWORK_NAME,HOMEWORK_DESCRIP,HOMEWORK_MAXDATE,HOMEWORK_CREATION,COURSES_COURSE_ID,COURSE_NAME,COURSE_CODE,CLASSROOMS_ID,SESSIONS_SESSION_ID FROM lmz.homeworks INNER JOIN courses ON COURSES_COURSE_ID = COURSE_ID WHERE HOMEWORK_STATUS =1 and COURSES_COURSE_ID= ? GROUP BY HOMEWORK_NAME ORDER BY HOMEWORK_ID ASC', [id]);
+            console.log(id);
+            res.json(Homeworks);
+            // res.status(404).json({text: 'Tarea no encontrado'});
         });
     }
     getOne(req, res) {

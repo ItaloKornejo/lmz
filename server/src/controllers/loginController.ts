@@ -44,11 +44,6 @@ class LoginController {
         res.json({message: 'Usuario Generado'});
     }
 
-    // public async delete (req: Request, res: Response): Promise<void>{
-    //     const {id} = req.params;
-    //     await pool.query('DELETE FROM lmz.courses WHERE COURSE_ID = ?', [id]);
-    //     res.json({text: 'Curso eliminado'});
-    // }
 }
 
 const loginController = new LoginController();

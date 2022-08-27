@@ -15,8 +15,8 @@ class StudentRoutes{
         this.router.get('/pdf', studentController.getPdf);
         this.router.get('/:id', studentController.getOne);
         this.router.post('/', studentController.create);
-        this.router.put('/:id',studentController.update);
-        this.router.delete('/:id',studentController.delete);
+        this.router.put('/edit/:id',studentController.update);
+        this.router.put('/:id',studentController.delete);
     }  
 }
 const studentRoutes = new StudentRoutes();

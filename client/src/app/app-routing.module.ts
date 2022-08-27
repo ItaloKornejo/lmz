@@ -17,47 +17,47 @@ import { ModalSessionEditComponent } from './components/modal-session-edit/modal
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/user',
     pathMatch: 'full'
   },
   {
-    path:'student',
+    path:'student/:idUser/:idCourse',
     component: StudentListComponent
   },
   {
-    path:'student/add',
+    path:'student/:idUser/:idCourse/add',
     component: StudentFormComponent
   },
   {
-    path:'student/edit/:id',
+    path:'student/:idUser/:idCourse/edit/:id',
     component: StudentFormComponent
   },
   {
-    path:'session',
+    path:'session/:idUser/:idCourse',
     component: SessionListComponent
   },
   {
-    path:'session/add',
+    path:'session/:idUser/:idCourse/add',
     component: SessionFormComponent
   },
   {
-    path:'homework',
+    path:'homework/:idUser/:idCourse',
     component: HomeworkListComponent
   },
   {
-    path:'homework/view',
+    path:'homework/:idUser/:idCourse/view/:idHomework',
     component: HomeworkInfoComponent
   },
   {
-    path:'homework/edit',
+    path:'homework/:idUser/:idCourse/edit',
     component: HomeworkFormComponent
   },
   {
-    path:'homework/add',
+    path:'homework/:idUser/:idCourse/add',
     component: HomeworkFormComponent
   },
   {
-    path:'login',
+    path:'user',
     component: LoginComponent
   },
   {
@@ -65,11 +65,11 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path:'course',
+    path:'course/:idUser',
     component: CourseListComponent
   },
   {
-    path:'course/add',
+    path:'course/:idUser/add',
     component: CourseFormComponent
   },
   {

@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
             icon: 'success',
             timer: 1000
           });
-          this.router.navigate(['/course']);
+          this.router.navigate([`/course/${Object.values(this.isAuth[0])[0]}`]);
 
          }else{
           Swal.fire({

@@ -1,31 +1,42 @@
 
 
 <div style="width: 85%; height: 50%;float:left;">
-  <h2> Periodo 2022</h2>
+  <h2> {{currentNameHomework}}</h2>
   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 </div>
 <div style="width: 15%; height: 50%; float:right;">
-  <a class="btn btn-warning" role="button">Modificar  <i class="fa fa-wrench" aria-hidden="true"></i> </a>
+  <a class="btn btn-warning" role="button" (click)="modalService.open(contenidoModificar)" >Modificar  <i class="fa fa-wrench" aria-hidden="true"></i> </a>
 </div>
+<div>
+  <ng-template #contenidoModificar let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Actualizar Fecha</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="mb-3">
+          <label for="datefinalSession">Fecha Final de Conclusion</label>
+          <div class="input-group d-flex justify-content-center">
+            <!-- <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker"> -->
+            <input class="border border-info rounded px-4 mt-3" type="datetime-local" id="meeting-time" name="homeworkMaxtime" >
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-success" (click)="modal.close();updateDateHomewwork()" >Guardar</button>
+    </div>
+  </ng-template>
+</div>
+
 <div class="container mt-3">
-  <!-- <div style="width: 80%; height: 50%;float:left;">
-      <h2>Alumnos Periodo 2022</h2>
-  </div>
-  <div style="width: 10%; height: 50%; float:right;">
-      <a class="btn btn-success" role="button" ><i class="fa fa-plus" aria-hidden="true"></i></a>
-  </div>
-  <div style="width: 10%; height: 50%; float:left;">
-    <a class="btn btn-info" role="button" ><i class="fa fa-download" aria-hidden="true"></i></a>
-</div> 
- -->
 
   <table class="table table-hover">
     <thead class="table bg-dark">
       <tr style="color:white">
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
-        <th scope="col">Aula</th>
-        <th scope="col">Nivel</th>
         <th scope="col">Nota</th>
         <th scope="col">Estado</th>
         <th scope="col" class="d-flex justify-content-center">Acciones</th>
@@ -35,17 +46,54 @@
       <tr *ngFor = "let student of students">
         <th scope="row">{{student.STUDENT_NAME}}</th>
         <td>{{student.STUDENT_LASTNAME}}</td>
-        <td>{{student.CLASSROOM_NAME}}</td>
-        <td>{{student.CLASSROOM_GRADE}} {{student.CLASSROOM_LEVEL}}</td>
-        <td>Sin Nota</td>
-        <td>Sin Entregar</td>
-        <!-- <td class="d-flex justify-content-between"> row justify-content-center -->
-          <td class="d-flex justify-content-center">
-          <a  class="btn btn-info" ><i class="fa fa-eye" aria-hidden="true"></i></a>
-          <a class="btn btn-success" ><i class="fa fa-check" aria-hidden="true"></i></a>
+        <td>{{homeworkNote(student.HOMEWORK_NOTE)}}</td>
+        <td>{{homeworkStatus(student.HOMEWORK_IMAGE)}}</td>
+        <td class="d-flex justify-content-center">
+
+          <!-- ///////////////////////////////////////////////////////// -->
+          <ng-template #contenidoInfo let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Imagen de Tarea</h4>
+              <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <div class="input-group d-flex justify-content-center">
+                     <img src={{imageHomework(student.HOMEWORK_IMAGE)}} width="300" height="400">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-success" (click)="modal.close();" >Regresar</button>
+            </div>
+          </ng-template>
+          <!-- ///////////////////////////////// -->
+          <ng-template #registrarNota let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Registrar Nota</h4>
+              <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="datefinalSession">Nota</label>
+                  <div class="input-group d-flex justify-content-center">
+                    <input class="form-control border border-info rounded px-4 mt-3" type="text" [(ngModel)]="oneNote.note" name="noteStudent" id="meeting-time" name="homeworkMaxtime" >
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-success" (click)="saveNote(oneNote.note,student.HOMEWORK_ID);modal.close();" >Guardar</button>
+            </div>
+          </ng-template>
+           <!-- ///////////////////////////////// -->
+          <a  class="btn btn-info" (click)="modalService.open(contenidoInfo)" ><i class="fa fa-eye" aria-hidden="true"></i></a>
+          <a class="btn btn-success" (click)="modalService.open(registrarNota)" ><i class="fa fa-check" aria-hidden="true"></i></a>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-

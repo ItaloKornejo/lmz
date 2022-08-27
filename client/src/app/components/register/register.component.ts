@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
     this.loginService.saveUser(this.user).subscribe(
       res =>{
         console.log(res);
-        this.router.navigate(['/student']);
+        this.router.navigate(['/user']);
       },
       err => console.error(err)
     );

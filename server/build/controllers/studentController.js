@@ -24,7 +24,7 @@ class StudentController {
     }
     listStudents(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const estudiantes = yield database_1.default.query('SELECT STUDENT_ID,STUDENT_NAME,STUDENT_LASTNAME,STUDENT_PHONE,CLASSROOMS_CLASSROOM_ID,CLASSROOM_NAME,CLASSROOM_GRADE,CLASSROOM_LEVEL FROM students INNER JOIN classrooms ON CLASSROOMS_CLASSROOM_ID = CLASSROOM_ID WHERE CLASSROOMS_CLASSROOM_ID=7 ORDER BY STUDENT_NAME ASC');
+            const estudiantes = yield database_1.default.query('SELECT STUDENT_ID,STUDENT_NAME,STUDENT_LASTNAME,STUDENT_PHONE,CLASSROOMS_CLASSROOM_ID,CLASSROOM_NAME,CLASSROOM_GRADE,CLASSROOM_LEVEL FROM students INNER JOIN classrooms ON CLASSROOMS_CLASSROOM_ID = CLASSROOM_ID WHERE CLASSROOMS_CLASSROOM_ID=7 and STUDENT_STATUS=1 ORDER BY STUDENT_NAME ASC');
             res.json(estudiantes);
             //res.json({text: 'LISTADO'});
         });
@@ -47,23 +47,31 @@ class StudentController {
             res.json({ message: 'Estudiante Generado' });
         });
     }
+    delete(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            //await pool.query('UPDATE STUDENTS set ? WHERE STUDENT_ID = ?', [req.body, id]);
+            yield database_1.default.query(`UPDATE lmz.students SET STUDENT_STATUS = '0' WHERE (STUDENT_ID = ${id})`);
+            console.log(id);
+            res.json({ text: 'Estudiante Eliminado' });
+        });
+    }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             yield database_1.default.query('UPDATE STUDENTS set ? WHERE STUDENT_ID = ?', [req.body, id]);
+            console.log(id);
             res.json({ text: 'Estudiante actualizado' });
         });
     }
-    delete(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            yield database_1.default.query('DELETE FROM STUDENTS WHERE STUDENT_ID = ?', [id]);
-            res.json({ text: 'Estudiante eliminado' });
-        });
-    }
+    // public async delete (req: Request, res: Response): Promise<void>{
+    //     const {id} = req.params;
+    //     await pool.query('DELETE FROM STUDENTS WHERE STUDENT_ID = ?', [id]);
+    //     res.json({text: 'Estudiante eliminado'});
+    // }
     getPdf(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const estudiantes = yield database_1.default.query('SELECT STUDENT_ID,STUDENT_NAME,STUDENT_LASTNAME,STUDENT_PHONE,CLASSROOMS_CLASSROOM_ID,CLASSROOM_NAME,CLASSROOM_GRADE,CLASSROOM_LEVEL FROM students INNER JOIN classrooms ON CLASSROOMS_CLASSROOM_ID = CLASSROOM_ID ORDER BY STUDENT_NAME ASC');
+            const estudiantes = yield database_1.default.query('SELECT STUDENT_ID,STUDENT_NAME,STUDENT_LASTNAME,STUDENT_PHONE,CLASSROOMS_CLASSROOM_ID,CLASSROOM_NAME,CLASSROOM_GRADE,CLASSROOM_LEVEL FROM students INNER JOIN classrooms ON CLASSROOMS_CLASSROOM_ID = CLASSROOM_ID WHERE CLASSROOMS_CLASSROOM_ID=7 and STUDENT_STATUS=1 ORDER BY STUDENT_NAME ASC');
             const students = estudiantes.map((estudiante) => {
                 const student = {
                     nameStudent: estudiante.STUDENT_NAME,

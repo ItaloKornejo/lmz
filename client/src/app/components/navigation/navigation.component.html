@@ -8,17 +8,18 @@
 			<div class="collapse navbar-collapse" id="nvbCollapse">
 				<ul class="navbar-nav mx-auto">
 					<li *ngIf="this.isLoggedin"class="nav-item pl-1">
-						<a class="nav-link" routerLink="/student">
+						<!-- <a class="nav-link" routerLink="/student/7/20"> -->
+							<a class="nav-link" [routerLink]="['/student', currentUser, currentCourse]">
               <i class="fa fa-user-plus fa-fw mr-1"></i> Alumnos 
             </a>
 					</li>
           			<li *ngIf="this.isLoggedin" class="nav-item pl-1">
-						<a class="nav-link" routerLink="/homework">
+						<a class="nav-link" [routerLink]="['/homework', currentUser, currentCourse]">
               		<i class='fas fa-clipboard-list '></i> Tareas
             		</a>
 					</li>
 					<li *ngIf="this.isLoggedin"  class="nav-item pl-1">
-						<a class="nav-link" routerLink="/session">
+						<a class="nav-link" [routerLink]="['/session', currentUser, currentCourse]">
               				<i class="fa fa-th-list fa-fw mr-1"></i> Sesions
             			</a>
 					</li>

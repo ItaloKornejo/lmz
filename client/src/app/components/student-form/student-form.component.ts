@@ -12,6 +12,8 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./student-form.component.css']
 })
 export class StudentFormComponent implements OnInit {
+  currentUser:any;
+  currentData:any;
 
   @HostBinding('class') classes = 'row';
   student: Student ={
@@ -24,12 +26,15 @@ export class StudentFormComponent implements OnInit {
 
 edit: boolean = false;
 buttonState: string="Guardar";
-
+ 
 constructor(private userService: LoginService,private studentService: StudentService,private router: Router, private activedRoute: ActivatedRoute) { }
 
 ngOnInit(): void {
   console.log(this.userService.isLoggedIn)
   const params = this.activedRoute.snapshot.params;
+  console.log('from Student FORM:');
+  console.log(params);
+  this.currentData=params;
     if(params['id']){
       this.studentService.getStudent(params['id'])
         .subscribe(
@@ -49,7 +54,7 @@ ngOnInit(): void {
     this.studentService.saveStudent(this.student).subscribe(
       res =>{
         console.log(res);
-        this.router.navigate(['/student']);
+        this.router.navigate([`/student/${this.currentData.idUser}/${this.currentData.idCourse}`]);
       },
       err => console.error(err)
     )
@@ -65,7 +70,7 @@ ngOnInit(): void {
     .subscribe(
       res =>{
         console.log(res);    
-        this.router.navigate(['/student']);    
+        this.router.navigate([`/student/${this.currentData.idUser}/${this.currentData.idCourse}`]);    
       },
       err => console.error(err)
     )

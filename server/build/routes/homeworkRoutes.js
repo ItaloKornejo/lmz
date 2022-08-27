@@ -13,8 +13,11 @@ class HomeworkRoutes {
     config() {
         this.router.get('/', homeworkController_1.default.list);
         this.router.get('/:id', homeworkController_1.default.getOne);
+        this.router.get('/list/:id', homeworkController_1.default.selectList);
+        this.router.post('/one/:id', homeworkController_1.default.selectOneHomework);
         this.router.post('/', homeworkController_1.default.create);
-        this.router.delete('/:id', homeworkController_1.default.delete);
+        this.router.post('/note/:id', homeworkController_1.default.registerNoteHomework);
+        this.router.put('/:id', homeworkController_1.default.delete);
     }
 }
 const homeworkRoutes = new HomeworkRoutes();

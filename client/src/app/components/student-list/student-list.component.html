@@ -32,7 +32,12 @@
           <td>{{student.CLASSROOM_NAME}}</td>
           <td>{{student.CLASSROOM_GRADE}} {{student.CLASSROOM_LEVEL}}</td>
           <td>
-            <a [routerLink]="['/student/edit', student.STUDENT_ID]" class="btn btn-warning" ><i class="fas fa-edit"></i></a>
+            <!-- <a [routerLink]="['/student/1/3/edit','1/3/edit'+student.STUDENT_ID.toString()]" class="btn btn-warning" >
+              <i class="fas fa-edit"></i>
+            </a> -->
+            <a (click)="getUpdateStudent(student.STUDENT_ID)" class="btn btn-warning" >
+              <i class="fas fa-edit"></i>
+            </a>
             <a class="btn btn-danger" (click)="deleteStudent(student.STUDENT_ID)"><i class="far fa-trash-alt"></i></a>
           </td>
         </tr>

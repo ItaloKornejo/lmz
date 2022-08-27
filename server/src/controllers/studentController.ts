@@ -4,8 +4,6 @@ import pool from '../database';
 
 const PDF = require('pdfkit-construct');
 
-
-
 class StudentController {
 
     public async list (req: Request, res: Response){
@@ -16,7 +14,7 @@ class StudentController {
     }
     
     public async listStudents (req: Request, res: Response){
-        const estudiantes = await pool.query('SELECT STUDENT_ID,STUDENT_NAME,STUDENT_LASTNAME,STUDENT_PHONE,CLASSROOMS_CLASSROOM_ID,CLASSROOM_NAME,CLASSROOM_GRADE,CLASSROOM_LEVEL FROM students INNER JOIN classrooms ON CLASSROOMS_CLASSROOM_ID = CLASSROOM_ID WHERE CLASSROOMS_CLASSROOM_ID=7 ORDER BY STUDENT_NAME ASC');
+        const estudiantes = await pool.query('SELECT STUDENT_ID,STUDENT_NAME,STUDENT_LASTNAME,STUDENT_PHONE,CLASSROOMS_CLASSROOM_ID,CLASSROOM_NAME,CLASSROOM_GRADE,CLASSROOM_LEVEL FROM students INNER JOIN classrooms ON CLASSROOMS_CLASSROOM_ID = CLASSROOM_ID WHERE CLASSROOMS_CLASSROOM_ID=7 and STUDENT_STATUS=1 ORDER BY STUDENT_NAME ASC');
 
         res.json(estudiantes);
         //res.json({text: 'LISTADO'});
@@ -38,21 +36,30 @@ class StudentController {
         res.json({message: 'Estudiante Generado'});
     }
 
+    public async delete (req: Request, res: Response): Promise<void>{
+        const {id} = req.params; 
+        //await pool.query('UPDATE STUDENTS set ? WHERE STUDENT_ID = ?', [req.body, id]);
+        await pool.query(`UPDATE lmz.students SET STUDENT_STATUS = '0' WHERE (STUDENT_ID = ${id})`);
+        console.log(id);
+        res.json({text: 'Estudiante Eliminado'});
+    }
+
     public async update (req: Request, res: Response): Promise<void>{
-        const {id} = req.params;
+        const {id} = req.params; 
         await pool.query('UPDATE STUDENTS set ? WHERE STUDENT_ID = ?', [req.body, id]);
+        console.log(id);
         res.json({text: 'Estudiante actualizado'});
     }
 
-    public async delete (req: Request, res: Response): Promise<void>{
-        const {id} = req.params;
-        await pool.query('DELETE FROM STUDENTS WHERE STUDENT_ID = ?', [id]);
-        res.json({text: 'Estudiante eliminado'});
-    }
+    // public async delete (req: Request, res: Response): Promise<void>{
+    //     const {id} = req.params;
+    //     await pool.query('DELETE FROM STUDENTS WHERE STUDENT_ID = ?', [id]);
+    //     res.json({text: 'Estudiante eliminado'});
+    // }
 
     public async getPdf (req: Request, res: Response): Promise<void>{
 
-        const estudiantes = await pool.query('SELECT STUDENT_ID,STUDENT_NAME,STUDENT_LASTNAME,STUDENT_PHONE,CLASSROOMS_CLASSROOM_ID,CLASSROOM_NAME,CLASSROOM_GRADE,CLASSROOM_LEVEL FROM students INNER JOIN classrooms ON CLASSROOMS_CLASSROOM_ID = CLASSROOM_ID ORDER BY STUDENT_NAME ASC');
+        const estudiantes = await pool.query('SELECT STUDENT_ID,STUDENT_NAME,STUDENT_LASTNAME,STUDENT_PHONE,CLASSROOMS_CLASSROOM_ID,CLASSROOM_NAME,CLASSROOM_GRADE,CLASSROOM_LEVEL FROM students INNER JOIN classrooms ON CLASSROOMS_CLASSROOM_ID = CLASSROOM_ID WHERE CLASSROOMS_CLASSROOM_ID=7 and STUDENT_STATUS=1 ORDER BY STUDENT_NAME ASC');
 
         const students = estudiantes.map( (estudiante : any) => {
             const student = { 

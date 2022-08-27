@@ -14,7 +14,8 @@ export class CourseFormComponent implements OnInit {
   classrooms: any = [];
   namesClassroom:any = [];
   gradesClassroom:any = [];
-  
+  currentUser:any;
+
   course: Course ={
     COURSE_ID: 0,
     COURSE_NAME: '' ,
@@ -22,13 +23,13 @@ export class CourseFormComponent implements OnInit {
     CLASSROOMS_ID : 7,
 };
 
-
-
   constructor(private userService: LoginService,private router: Router, private activedRoute: ActivatedRoute,private courseService: CourseService,private classroomService: ClassroomService) { }
 
   ngOnInit(): void {
+    const params = this.activedRoute.snapshot.params;
+    this.currentUser = params['idUser']; 
+    console.log('Estamos en CourseFORM: '+this.currentUser )
     this.getClassrooms();
-    
   }
   
   saveNewCourse(){
@@ -37,11 +38,12 @@ export class CourseFormComponent implements OnInit {
     this.courseService.saveCourse(this.course).subscribe(
       res =>{
         console.log(res);
-        this.router.navigate(['/course']);
+        this.router.navigate([`/course/${this.currentUser}`]);
       },
       err => console.error(err)
     )
   }
+
   getClassrooms(){
     this.classroomService.getClassrooms().subscribe(
       res => {
@@ -59,6 +61,7 @@ export class CourseFormComponent implements OnInit {
       }
     }
   }
+  
   gradeClassrooms(namesClassroom : String){
     for (let obj of this.classrooms ){
         if(!this.namesClassroom.includes(Object.values(obj)[1]) && Object.values(obj)[1]==namesClassroom){

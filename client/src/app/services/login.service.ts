@@ -12,6 +12,9 @@ export class LoginService {
 
   isLoggedIn = false;
 
+  currentUser :any ;
+  currentCourse : any;
+
   API_URL = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) { }
@@ -25,11 +28,6 @@ export class LoginService {
   }
 
 
-  
-  // saveHomework(homework: Homework){
-  //   return this.http.post(`${this.API_URL}/homework`, homework);
-  // }
-
   getAuth(user : User){
     return this.http.post(`${this.API_URL}/login/isAuth`,user);
   }
@@ -37,7 +35,4 @@ export class LoginService {
   saveUser(user: User){
     return this.http.post(`${this.API_URL}/login`, user);
   }
-
-  
-
 }

@@ -25,7 +25,8 @@
                 {{(homework.HOMEWORK_MAXDATE.toString().substring(11,16))}}
             </p>
         </div>
-            <button routerLink="/homework/view" class="btn btn-info btn-block"><span style="font-size: 150%; color: white; ">visualizar</span></button>
+            <!-- <button routerLink="/homework/7/1/view/1" class="btn btn-info btn-block"><span style="font-size: 150%; color: white; ">visualizar</span></button> -->
+            <button [routerLink]="['/homework', currentData.idUser, currentData.idCourse,'view',homework.HOMEWORK_ID]" class="btn btn-info btn-block"><span style="font-size: 150%; color: white; ">visualizar</span></button>
     </div>
     <div><p></p></div>
 </div>

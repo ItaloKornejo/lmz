@@ -1,5 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { CourseService } from "../../services/course.service";
 
@@ -11,12 +11,16 @@ import { CourseService } from "../../services/course.service";
 export class CourseListComponent implements OnInit {
 
   // @HostBinding('class') classes = 'row';
+  currentUser:any;
 
   courses: any = [];
 
-  constructor(private courseService: CourseService,private userService: LoginService,private router: Router ) { }
+  constructor(private courseService: CourseService,private userService: LoginService,private router: Router, private activedRoute: ActivatedRoute ) { }
 
   ngOnInit(): void {
+    const params = this.activedRoute.snapshot.params;
+    this.currentUser = params['idUser']; 
+    console.log( this.currentUser)
     this.getCourses();
   }
 
@@ -39,11 +43,19 @@ export class CourseListComponent implements OnInit {
     )
   }
 
-  goCourse(){
+  goCourse(idCourse: string){
     this.userService.isLoggedIn=true;
-    this.router.navigate(['/student']);    
+    this.userService.currentUser=this.currentUser;
+    this.userService.currentCourse=idCourse;
+    this.router.navigate([`/student/${this.currentUser}/${idCourse}`]);    
 
   }
+
+  addCourse(){
+    this.router.navigate([`/course/${this.currentUser}/add`]);    
+
+  }
+  
 
   
   

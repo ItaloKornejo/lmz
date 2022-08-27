@@ -13,6 +13,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class HomeworkFormComponent implements OnInit {
 
   classrooms: any = []; 
+  currentData:any;
   homework: Homework ={
     HOMEWORK_ID: 0,
     HOMEWORK_NAME: '' ,
@@ -27,7 +28,14 @@ export class HomeworkFormComponent implements OnInit {
 constructor(private userService: LoginService,private homeworkService: HomeworkService,private router: Router, private activedRoute: ActivatedRoute,private classroomService: ClassroomService) { }
 
   ngOnInit(): void {
+    const params = this.activedRoute.snapshot.params;
+    this.currentData =params;
+    this.userService.isLoggedIn=true;
+    this.homework.COURSES_COURSE_ID=this.currentData.idCourse;
+    console.log('Estamos en HOMEWORK-FORM-ADD:');
+    console.log(params);
     this.getClassrooms();
+    
   }
 
   saveNewStudent(){
@@ -35,7 +43,7 @@ constructor(private userService: LoginService,private homeworkService: HomeworkS
     this.homeworkService.saveHomework(this.homework).subscribe(
       res =>{
         console.log(res);
-        this.router.navigate(['/homework']);
+        this.router.navigate([`/homework/${this.currentData.idUser}/${this.currentData.idCourse}`]);
       },
       err => console.error(err)
     )}

@@ -5,10 +5,20 @@ import pool from '../database';
 
 class SessionController {
     public async list (req: Request, res: Response){
-        const Sessions = await pool.query('SELECT SESSION_ID,SESSION_NUMBER,SESSION_INI,SESSION_END,HOMEWORK_ID,HOMEWORK_NAME,HOMEWORK_DESCRIP,HOMEWORK_MAXDATE,COURSES_COURSE_ID,COURSE_NAME,COURSE_CODE FROM sessions INNER JOIN homeworks ON SESSION_ID = SESSIONS_SESSION_ID INNER JOIN courses ON COURSES_COURSE_ID = COURSE_ID  GROUP BY HOMEWORK_NAME ORDER BY SESSION_NUMBER ASC');
+        const Sessions = await pool.query('SELECT SESSION_ID,SESSION_NUMBER,SESSION_INI,SESSION_END,HOMEWORK_ID,HOMEWORK_NAME,HOMEWORK_DESCRIP,HOMEWORK_MAXDATE,COURSES_COURSE_ID,COURSE_NAME,COURSE_CODE FROM sessions INNER JOIN homeworks ON SESSION_ID = SESSIONS_SESSION_ID INNER JOIN courses ON COURSES_COURSE_ID = COURSE_ID Where HOMEWORK_STATUS=1 GROUP BY HOMEWORK_NAME ORDER BY SESSION_NUMBER ASC');
         res.json(Sessions);
         //res.json({text: 'LISTADO'});
     }
+
+    public async selectList (req: Request, res: Response): Promise<any>{
+        const {id}  = req.params;
+        const Homeworks = await pool.query('SELECT HOMEWORK_ID,HOMEWORK_NAME,HOMEWORK_DESCRIP,HOMEWORK_MAXDATE,HOMEWORK_CREATION,COURSES_COURSE_ID,COURSE_NAME,COURSE_CODE,CLASSROOMS_ID,SESSIONS_SESSION_ID FROM lmz.homeworks INNER JOIN courses ON COURSES_COURSE_ID = COURSE_ID WHERE HOMEWORK_STATUS =1 and COURSES_COURSE_ID= ? GROUP BY HOMEWORK_NAME ORDER BY HOMEWORK_ID ASC', [id]);
+        console.log(id);
+        res.json(Homeworks);
+
+        // res.status(404).json({text: 'Tarea no encontrado'});
+    }
+
 
     public async getOne (req: Request, res: Response): Promise<any>{ 
         const {id}  = req.params;
@@ -43,4 +53,4 @@ class SessionController {
 
 const sessionController = new SessionController();
 export default sessionController;
-
+ 
